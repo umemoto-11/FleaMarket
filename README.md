@@ -57,9 +57,9 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 ## テスト用アカウント・決済情報
 
-# Stripeテストカード番号
+**Stripeテストカード番号**
 ・成功:4242 4242 4242 4242  
 ※有効期限:未来の日付/CVC:任意の3桁
 
-# Mailtrap
+**Mailtrap**
 ・メールはMailtrapダッシュボードで確認可能
