@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,9 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'profile_id',
         'name',
         'email',
         'password',
+        'is_profile_setup',
     ];
 
     /**
@@ -31,6 +33,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
+        'two_factor_confirmed_at',
+        'two_factor_recovery_codes',
     ];
 
     /**
@@ -41,4 +47,39 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
+    public function likedItems()
+    {
+        return $this->belongsToMany(Item::class, 'likes', 'user_id', 'item_id');
+    }
+
+    public function hasLiked($itemId)
+    {
+        return $this->likedItems()->where('item_id', $itemId)->exists();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function purchasedItems()
+    {
+        return $this->hasMany(Item::class, 'buyer_id');
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'user_id');
+    }
+
+    public function listedItems()
+    {
+        return $this->hasMany(Item::class, 'user_id');
+    }
 }

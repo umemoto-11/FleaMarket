@@ -1,0 +1,234 @@
+.item-detail-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.item-detail-left {
+    flex-shrink: 0;
+}
+
+.item-detail-right {
+    flex: 1;
+    max-width: 450px;
+}
+
+.item-image-wrapper {
+    position: relative;
+}
+
+.item-image-wrapper img {
+    width: 500px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    object-fit: cover;
+}
+
+.soldout-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff4b4b;
+    color: #fff;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.item-detail-right .brand-price {
+    display: block;
+    width: 100%;
+}
+
+.item-detail-right .brand,
+.item-detail-right .price {
+    display: block;
+    width: 100%;
+    margin: 0 0 8px 0;
+    box-sizing: border-box;
+}
+
+.brand {
+    font-size: 14px;
+    color: #000;
+}
+
+.price {
+    font-size: 20px;
+    color: #000;
+}
+
+.price span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    margin-left: 6px;
+}
+
+.icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-block i {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.like-button.liked i {
+    color: gold;
+}
+
+.likes-count,
+.comment-count {
+    font-size: 14px;
+    color: #333;
+}
+
+.icon-utilities {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0 18px 0;
+    align-items: center;
+}
+
+.form__button-submit {
+    display: block;
+    width: 100%;
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sub-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.item-info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.item-info-label {
+    font-weight: bold;
+    margin-right: 12px;
+    white-space: nowrap;
+}
+
+.item-info-values {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.category-tag {
+    padding: 4px 10px;
+    border-radius: 12px;
+    background-color: #D9D9D9;
+    font-size: 14px;
+    line-height: 1.4;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.item-info-value {
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.comments-section {
+    margin-top: 20px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.comment-header,
+.comment-utilities {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.comment-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.comment-name {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.comment-body {
+    background-color: #f5f5f5;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.3;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    height: 240px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.comment__button-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
