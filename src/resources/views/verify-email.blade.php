@@ -10,11 +10,20 @@
         登録していただいたメールアドレスに認証メールを付しました。<br>
         メール認証を完了してください。
     </p>
-    <form action="{{ route('verification.notice') }}" method="get">
-        <div class="verify__button">
-            <button class="verify__button-submit" type="submit">認証はこちらから</button>
-        </div>
-    </form>
+    @if(app()->environment('local'))
+    <div class="verify__button">
+        <a class="verify__button-link"
+            href="{{ URL::temporarySignedRoute(
+                'verification.verify',
+                now()->addMinutes(60),
+                ['id' => auth()->user()->id, 'hash' => sha1(auth()->user()->email)]
+            ) }}">
+            認証はこちらから
+        </a>
+    </div>
+    @else
+    <p>メールをご確認のうえ、リンクをクリックしてください。</p>
+    @endif
     <form id="resend-form" action="{{ route('verification.send') }}" method="post">
         @csrf
         <div class="resend__link">

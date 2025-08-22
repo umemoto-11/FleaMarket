@@ -15,15 +15,18 @@
     margin-bottom: 20px;
 }
 
-.verify__button-submit {
+.verify__button-link {
+    display: inline-block;
     background-color: #D9D9D9;
     border: 2px solid #000;
     padding: 12px 40px;
     font-size: 20px;
     font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #000;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 6px;
 }
 
 .resend__link a {
