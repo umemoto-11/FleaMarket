@@ -24,7 +24,6 @@
 .item-image-wrapper img {
     width: 500px;
     height: auto;
-    border-radius: 8px;
     display: block;
     object-fit: cover;
 }
@@ -193,6 +192,12 @@
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+    border: 1px solid #D9D9D9;
+    background-color: #D9D9D9;
+}
+
+.comment-image[src*="base64"] {
+    object-fit: none;
 }
 
 .comment-name {

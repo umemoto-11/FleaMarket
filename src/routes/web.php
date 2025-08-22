@@ -67,8 +67,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         $user = auth()->user();
 
         $image = $request->file('image');
-        $fileName = $image->getClientOriginalName();
-        $path = $image->storeAs('profiles', $fileName, 'public');
+        $path = null;
+        if ($image) {
+            $fileName = $image->getClientOriginalName();
+            $path = $image->storeAs('profiles', $fileName, 'public');
+        }
 
         $profile = Profile::create([
             'name'     => $request->name,

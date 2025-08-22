@@ -115,7 +115,9 @@
             @forelse ($item->comments ?? [] as $comment)
             <div class="comment">
                 <div class="comment-utilities">
-                    <img class="comment-image" src="{{ asset('storage/' . $comment->user->profile->image) }}" alt="">
+                    <img class="comment-image" src="{{ !empty($comment->user->profile->image)
+                    ? asset('storage/' . $comment->user->profile->image)
+                    : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==' }}" alt="">
                     <span class="comment-name">{{ $comment->user->name }}</span>
                 </div>
                 <div class="comment-body">

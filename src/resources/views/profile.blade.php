@@ -12,7 +12,7 @@
             @php
             $imagePath = optional($profile)->image;
             @endphp
-            <img class="profile-image" src="{{ asset('storage/' . $imagePath) }}" alt="">
+            <img class="profile-image" src="{{ $imagePath ? asset('storage/' . $imagePath) : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==' }}" alt="">
             <span class="user_name">{{ optional($profile)->name }}</span>
             <button class="edit__button" type="submit">プロフィールを編集</button>
         </div>
