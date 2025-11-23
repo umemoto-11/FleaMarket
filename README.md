@@ -48,7 +48,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 ## ER図
 
-![ER図](img/ER図.png)
+![ER図](img/FleaMarket.png)
 
 ## URL
 
