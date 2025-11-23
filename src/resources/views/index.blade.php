@@ -25,7 +25,7 @@
                     <span class="link__title">{{ $item->name }}</span>
                 </div>
                 @if ($item->is_sold)
-                <div class="soldout-label">SOLD OUT</div>
+                <div class="soldout-label">Sold</div>
                 @endif
             </a>
         </li>

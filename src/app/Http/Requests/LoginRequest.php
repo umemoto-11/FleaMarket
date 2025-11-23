@@ -28,7 +28,7 @@ class LoginRequest extends FortifyLoginRequest
     {
         return [
             'email' => ['required', 'email'],
-            'password' => ['required', 'max:8'],
+            'password' => ['required', 'min:8'],
         ];
     }
 
@@ -38,7 +38,7 @@ class LoginRequest extends FortifyLoginRequest
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレスはメール形式で入力してください',
             'password.required' => 'パスワードを入力してください',
-            'password.max' => 'パスワードは8文字以上で入力してください',
+            'password.min' => 'パスワードは8文字以上で入力してください',
         ];
     }
 
@@ -48,7 +48,7 @@ class LoginRequest extends FortifyLoginRequest
 
         if (!Auth::attempt($credentials, $this->boolean('remember'))) {
             throw ValidationException::withMessages([
-                'password' => 'ログイン情報が登録されていません。',
+                'password' => 'ログイン情報が登録されていません',
             ]);
         }
 

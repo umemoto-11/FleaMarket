@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\CustomLoginController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Models\Profile;
@@ -13,6 +14,8 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Requests\ProfileRequest;
+use App\Http\Controllers\TradeController;
+use App\Http\Controllers\TradeReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,8 @@ use App\Http\Requests\ProfileRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('/login', [CustomLoginController::class, 'store']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -110,4 +115,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage', [ProfileController::class, 'index'])->name('mypage');
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    // 取引詳細（チャット画面）
+    Route::get('/trade/{trade}', [TradeController::class, 'show'])->name('trade.show');
+
+    // チャット投稿
+    Route::post('/trade/{trade}/message', [TradeController::class, 'storeMessage'])->name('trade.message.store');
+
+    // チャット編集
+    Route::post('/trade/message/{message}/edit', [TradeController::class, 'updateMessage'])->name('trade.message.update');
+
+    // チャット削除
+    Route::delete('/trade/message/{message}', [TradeController::class, 'deleteMessage'])->name('trade.message.delete');
+
+    // 取引評価の保存
+    Route::post('/trade/{trade}/review', [TradeReviewController::class, 'store'])->name('trade.review.store');
 });

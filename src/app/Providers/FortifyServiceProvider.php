@@ -15,8 +15,8 @@ use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Laravel\Fortify\Contracts\RegisterResponse;
-use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
-use App\Http\Requests\LoginRequest as CustomLoginRequest;
+// use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+// use App\Http\Requests\LoginRequest as CustomLoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -50,14 +50,14 @@ class FortifyServiceProvider extends ServiceProvider
             return view('login');
         });
 
-        Fortify::authenticateUsing(function (FortifyLoginRequest $request) {
-            $customRequest = app(CustomLoginRequest::class);
-            $customRequest->setContainer(app())->setRedirector(app('redirect'))->merge($request->all());
+        // Fortify::authenticateUsing(function (FortifyLoginRequest $request) {
+        //     $customRequest = app(CustomLoginRequest::class);
+        //     $customRequest->setContainer(app())->setRedirector(app('redirect'))->merge($request->all());
 
-            $customRequest->authenticate();
+        //     $customRequest->authenticate();
 
-            return $request->user();
-        });
+        //     return $request->user();
+        // });
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;

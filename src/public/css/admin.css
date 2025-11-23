@@ -237,3 +237,7 @@ textarea {
     font-weight: 700;
     cursor: pointer;
 }
+
+.comment-error {
+    color: red;
+}

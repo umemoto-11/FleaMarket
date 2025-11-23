@@ -29,6 +29,9 @@ class Item extends Model
         'description',
         'buyer_id',
         'is_sold',
+        'shipping_postcode',
+        'shipping_address',
+        'shipping_building',
     ];
 
     public function categories()

@@ -11,7 +11,7 @@
             <img src="{{ asset('storage/' . $item->image ) }}" alt="">
             <input type="hidden" name="id" value="{{ $item['id'] }}">
             @if ($item->is_sold)
-            <div class="soldout-label">SOLD OUT</div>
+            <div class="soldout-label">Sold</div>
             @endif
         </div>
     </div>

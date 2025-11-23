@@ -4,26 +4,63 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Trade;
+use App\Models\TradeReview;
 
 class ProfileController extends Controller
 {
     public function index(Request $request)
     {
         $user = Auth::user();
-        $page = $request->query('page');
+        $page = $request->query('page', 'sell');
         $items = collect();
 
-        if ($page === 'buy') {
-            $items = $user->purchasedItems ?: collect();
-        } elseif ($page === 'sell') {
+        if ($page === 'sell') {
             $items = $user->listedItems ?: collect();
-        } else {
-            $items = $user->listedItems;
+        }
+        elseif ($page === 'buy') {
+            $items = $user->purchasedItems ?: collect();
+        }
+        elseif ($page === 'trades') {
+            $userId = $user->id;
+
+            $items = Trade::where(function ($q) use ($userId) {
+                        $q->where('buyer_id', $userId)
+                            ->orWhere('seller_id', $userId);
+                    })
+                    ->with([
+                        'item',
+                        'messages' => function ($q) {
+                            $q->latest();
+                        }
+                    ])
+                    ->withCount([
+                        'messages as unread_count' => function ($q) use ($userId) {
+                            $q->where('user_id', '!=', $userId)
+                            ->where('is_read', false);
+                        }
+                    ])
+                    ->get()
+                    ->sortByDesc(function ($trade) {
+                        return optional($trade->messages->first())->created_at;
+                    })
+                    ->values();
         }
 
-        $profile = $user->profile;
+        $tradesUnreadCount = $items->sum('unread_count');
 
-        return view('profile', compact('profile', 'items', 'page'));
+        $averageRating = TradeReview::where('reviewee_id', $user->id)
+                            ->avg('rating');
+
+        $averageRatingRounded = $averageRating ? round($averageRating) : null;
+
+        return view('profile', [
+            'profile' => $user->profile,
+            'items' => $items,
+            'page' => $page,
+            'averageRating' => $averageRatingRounded,
+            'tradesUnreadCount' => $tradesUnreadCount,
+        ]);
     }
 
     public function edit()

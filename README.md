@@ -55,7 +55,21 @@ MAIL_FROM_NAME="${APP_NAME}"
 ・開発環境：http://localhost/  
 ・phpMyAdmin：http://localhost:8080/
 
-## テスト用アカウント・決済情報
+## テストアカウント
+name: 一般ユーザ  
+email: user1@example.com  
+password: password  
+-------------------------
+name: 一般ユーザ  
+email: user2@example.com  
+password: password  
+-------------------------
+name: 一般ユーザ  
+email: user3@example.com  
+password: password  
+-------------------------
+
+## 決済情報
 
 **Stripeテストカード番号**
 ・成功:4242 4242 4242 4242  
@@ -63,3 +77,20 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 **Mailtrap**
 ・メールはMailtrapダッシュボードで確認可能
+
+## PHPUnitを利用したテストに関して
+以下のコマンド:  
+```
+//テスト用データベースの作成
+docker-compose exec mysql bash
+mysql -u root -p
+//パスワードはrootと入力
+create database test_database;
+
+docker-compose exec php bash
+php artisan migrate:fresh --env=testing
+./vendor/bin/phpunit
+```
+
+## 備考
+mailtrapを使用した取引完了メールが、エラー解消できず未実装になっております。

@@ -18,7 +18,7 @@
             <div class="product-image">
                 <img src="{{ asset('storage/' . $item->image ) }}" alt="">
                 @if ($item->is_sold)
-                <div class="soldout-label">SOLD OUT</div>
+                <div class="soldout-label">Sold</div>
                 @endif
             </div>
             <div class="product-info">

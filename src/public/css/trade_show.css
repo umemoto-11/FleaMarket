@@ -1,0 +1,285 @@
+.trade-sidebar {
+    background-color: #868686;
+    color: #fff;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.trade-sidebar h5 {
+    color: #fff;
+    font-size: 30px;
+}
+
+.trade-sidebar .list-group-item {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 0.75rem;
+}
+
+.trade-sidebar .list-group-item.active {
+    background-color: #495057;
+    color: #fff;
+}
+
+.trade-main-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.trade-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.trade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 2px solid #5F5F5F;
+    flex-shrink: 0;
+}
+
+.d-flex h4 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.btn-complete {
+    background-color: #FF8282;
+    border-color: #FF8282;
+    color: #fff;
+    border-radius: 30px;
+}
+
+.trade-item {
+    flex-shrink: 0;
+    margin: 1rem;
+    padding: 1rem;
+    border-bottom: 2px solid #5F5F5F;
+}
+
+.trade-item .item-image {
+    width: 203px;
+    height: 206px;
+    object-fit: cover;
+}
+
+.item-name {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.item-price {
+    font-size: 30px;
+}
+
+.chat-box {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 1rem;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message.self {
+    align-items: flex-end;
+}
+
+.chat-message.partner {
+    align-items: flex-start;
+}
+
+.chat-bubble-wrapper {
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-user-info {
+    margin-bottom: 2px;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.chat-bubble {
+    padding: 8px 12px;
+    border-radius: 15px;
+    word-wrap: break-word;
+}
+
+.my-message {
+    background-color: #D9D9D9;
+    border-radius: 6px;
+}
+
+.edit-message-btn,
+.delete-message-btn {
+    color: #5F5F5F;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.edit-message-btn:hover,
+.delete-message-btn:hover,
+.edit-message-btn:focus,
+.delete-message-btn:focus {
+    color: #5F5F5F;
+    text-decoration: none;
+}
+
+.partner-message {
+    background-color: #D9D9D9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.chat-image {
+    max-width: 80px;
+    max-height: 60px;
+    display: block;
+    margin-bottom: 4px;
+    border-radius: 5px;
+}
+
+.chat-actions {
+    font-size: 0.75rem;
+    margin-top: 2px;
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+}
+
+.chat-form-wrapper {
+    flex-shrink: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-input {
+    flex: 1;
+    height: 32px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+.chat-image-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.chat-image-input {
+    display: none;
+}
+
+.btn-send {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn-send img {
+    width: 24px;
+    height: 24px;
+}
+
+.image-preview img {
+    max-width: 80px;
+    max-height: 60px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #D9D9D9;
+    background-color: #D9D9D9;
+}
+
+.chat-avatar.ms-2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #D9D9D9;
+    background-color: #D9D9D9;
+}
+
+.chat-avatar.me-2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #D9D9D9;
+    background-color: #D9D9D9;
+}
+
+.item-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background-color: #ddd;
+    border: 1px solid #D9D9D9;
+}
+
+.modal-content {
+    background-color: #FDFCE6;
+}
+
+.modal-header .modal-title {
+    color: #000;
+    font-size: 30px;
+}
+
+.modal-label {
+    font-size: 20px;
+    color: #868686;
+}
+
+.star {
+    font-size: 90px;
+}
+
+.modal-footer .btn-primary {
+    background-color: #FF8282;
+    border-color: #FF8282;
+    color: #fff;
+}
+
+.error {
+    color: red;
+}

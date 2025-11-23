@@ -15,6 +15,9 @@ class AddBuyerIdToItemsTable extends Migration
     {
         Schema::table('items', function (Blueprint $table) {
             $table->foreignId('buyer_id')->nullable()->after('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('shipping_postcode')->nullable();
+            $table->string('shipping_address')->nullable();
+            $table->string('shipping_building')->nullable();
         });
     }
 
