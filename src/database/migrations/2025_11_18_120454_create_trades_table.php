@@ -20,6 +20,7 @@ class CreateTradesTable extends Migration
             $table->foreignId('seller_id')->constrained('users')->onDelete('cascade');
             $table->enum('status', ['chatting', 'completed'])->default('chatting');
             $table->boolean('buyer_completed')->default(false);
+            $table->boolean('seller_completed')->default(false);
             $table->timestamps();
         });
     }

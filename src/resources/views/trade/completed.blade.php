@@ -1,21 +1,18 @@
-@component('mail::message')
+<p>{{ $seller->name }} 様</p>
 
-{{ $seller->name }} 様
+<p>以下の商品について、購入者が取引を完了しましたのでお知らせいたします。</p>
 
-以下の商品について、購入者が取引を完了しましたのでお知らせいたします。
+<hr>
 
----
+<p>■ 商品名：{{ $trade->item->name }}<br>
+■ 取引ID：{{ $trade->id }}<br>
+■ 購入者：{{ $buyer->name }}<br>
+■ 完了日時：{{ now()->format('Y-m-d H:i') }}</p>
 
-■ 商品名：{{ $trade->item->name }}
-■ 取引ID：{{ $trade->id }}
-■ 購入者：{{ $buyer->name }}
-■ 完了日時：{{ now()->format('Y-m-d H:i') }}
+<hr>
 
----
+<p>取引内容をご確認のうえ、必要に応じて評価を行ってください。</p>
 
-取引内容をご確認のうえ、必要に応じて評価を行ってください。
+<p>※ このメールは自動送信されています。返信は不要です。</p>
 
-※ このメールは自動送信されています。返信は不要です。
-
-{{ config('app.name') }}
-@endcomponent
+<p>{{ config('app.name') }}</p>

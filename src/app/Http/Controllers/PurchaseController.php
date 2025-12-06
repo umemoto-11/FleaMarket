@@ -28,8 +28,22 @@ class PurchaseController extends Controller
     public function update(AddressRequest $request, $id)
     {
         $item = Item::findOrFail($id);
+        $user = Auth::user();
 
-        Auth::user()->profile()->update([
+        if (!$user->profile) {
+            $profile = Profile::create([
+                'name'     => $user->name,
+                'postcode' => '',
+                'address'  => '',
+                'building' => '',
+            ]);
+
+            $user->profile_id = $profile->id;
+            $user->save();
+            $user->refresh();
+        }
+
+        $user->profile->update([
             'postcode' => $request->postcode,
             'address' => $request->address,
             'building' => $request->building,

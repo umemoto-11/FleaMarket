@@ -26,7 +26,7 @@
                             $partnerIcon = optional($partner->profile)->icon;
                         @endphp
                         <img src="{{ $partnerIcon ? asset('storage/' . $partnerIcon) : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==' }}"
-                            class="rounded-circle" width="50" height="50">
+                            class="rounded-circle">
                         <h4 class="mb-0">「{{ $partner->name }}」 さんとの取引</h4>
                     </div>
                     @if($trade->status === 'chatting' && $trade->buyer_id === auth()->id())
@@ -113,12 +113,12 @@
                     <form action="{{ route('trade.message.store', $trade->id) }}" method="POST" id="chat-form" enctype="multipart/form-data" class="d-flex gap-2 align-items-end">
                         @csrf
                         <input type="hidden" name="edit_message_id" id="edit-message-id">
-                        <input type="text" name="message" id="chat-input" class="form-control" placeholder="取引メッセージを記入してください" value="{{ old('message') }}">
+                        <input type="text" name="message" id="chat-input" class="form-control" data-trade-id="{{ $trade->id }}" placeholder="取引メッセージを記入してください" value="{{ old('message') }}">
                         <div class="chat-image-upload-wrapper">
                             <label for="chat-image" class="chat-image-btn">画像を追加</label>
-                            <input type="file" id="chat-image" name="image" accept=".jpeg,.jpg,.png" class="chat-image-input">
+                            <input type="file" id="chat-image" name="image" class="chat-image-input">
                         </div>
-                        <button type="submit" id="send-btn" class="btn btn-send">
+                        <button type="submit" id="send-btn" class="btn-send">
                             <img src="{{ asset('img/e99395e98ea663a8400f40e836a71b8c4e773b01.jpg') }}" alt="送信">
                         </button>
                         <button type="button" id="update-btn" class="btn btn-primary d-none">更新</button>
@@ -164,6 +164,24 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const input = document.getElementById('chat-input');
+        const tradeId = input.dataset.tradeId;
+        const storageKey = `chat_draft_${tradeId}`;
+
+        const savedMessage = localStorage.getItem(storageKey);
+        if (savedMessage) {
+            input.value = savedMessage;
+        }
+
+        input.addEventListener('input', function () {
+            localStorage.setItem(storageKey, input.value);
+        });
+
+        const form = input.closest('form');
+        form.addEventListener('submit', function () {
+            localStorage.removeItem(storageKey);
+        });
+
         const stars = document.querySelectorAll('#star-rating .star');
         const ratingValue = document.getElementById('rating-value');
         stars.forEach(star => {

@@ -93,4 +93,3 @@ php artisan migrate:fresh --env=testing
 ```
 
 ## 備考
-mailtrapを使用した取引完了メールが、エラー解消できず未実装になっております。

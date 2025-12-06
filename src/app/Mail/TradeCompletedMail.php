@@ -35,17 +35,15 @@ class TradeCompletedMail extends Mailable
      */
     public function build()
     {
-        $html = Blade::render(
-            file_get_contents(base_path('src/resources/views/trade/completed.blade.php')),
-            [
-                'seller' => $this->seller,
-                'buyer'  => $this->buyer,
-                'trade'  => $this->trade,
-            ]
-        );
+        $data = [
+            'seller' => $this->seller,
+            'buyer'  => $this->buyer,
+            'trade'  => $this->trade,
+        ];
 
         return $this->subject('取引が完了しました')
-                    ->from(config('mail.from.address'), config('mail.from.name'))
-                    ->html($html);
+            ->from(config('mail.from.address'))
+            ->view('trade.completed')
+            ->with($data);
     }
 }

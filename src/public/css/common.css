@@ -92,3 +92,50 @@
     border-radius: 4px;
     font-weight: bold;
 }
+
+@media (max-width: 1024px) {
+
+    .header-utilities img,
+    .search-form-wrapper,
+    .header-nav {
+        position: static;
+        transform: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .header-utilities img {
+        height: 34px;
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .search-form-wrapper {
+        flex: 1;
+        max-width: 260px;
+        min-width: 140px;
+    }
+
+    .search-form {
+        width: 100%;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .header-nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
