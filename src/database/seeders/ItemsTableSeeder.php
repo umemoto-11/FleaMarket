@@ -115,7 +115,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'メイクセット',
                 'price' => '2500',
                 'brand' => '',
-                'image' => 'items/外出メイクアップセット.jpg',
+                'image' => 'items/makeup_set.jpg',
                 'condition' => '2',
                 'description' => '便利なメイクアップセット',
             ],
