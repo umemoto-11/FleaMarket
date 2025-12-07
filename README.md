@@ -4,7 +4,7 @@
 
 ### Dockerビルド
 
-1.`git clone git@github.com:coachtech-material/laravel-docker-template.git`  
+1.`git clone git@github.com:umemoto-11/FleaMarket.git`  
 2.`docker-compose up -d --build`
 
 ### Laravel環境構築
@@ -15,6 +15,7 @@
 4.php artisan key:generate  
 5.php artisan migrate  
 6.php artisan db:seed  
+7.php artisan storage:link  
 
 ---
 
@@ -93,3 +94,5 @@ php artisan migrate:fresh --env=testing
 ```
 
 ## 備考
+画像アップロードにstorage/app/publicを使用しています。
+セットアップ後は、php artisan storage:linkコマンド実行が必須になっております。
